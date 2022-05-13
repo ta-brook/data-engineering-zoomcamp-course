@@ -77,7 +77,7 @@ python ingest_data.py \
 # dockerize above pipeline
 docker build -t taxi_ingest:v001 .
 
-URL="http://172.20.10.11:8000/yellow_tripdata_2021-01.parquet"
+URL="http://IP:8000/yellow_tripdata_2021-01.parquet"
 
 winpty docker run -it \
     --network=pg-network \
