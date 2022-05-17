@@ -13,22 +13,24 @@ winpty docker run -it \
 
 winpty docker run -it -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="ny_taxi" -v c://Users/tanaw/Documents/GitHub/data-engineering-zoomcamp-course/week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data -p 5432:5432 postgres:13
 
+# install pgcli
 pip install pgcli
 pgcli -h localhost -p 5432 -u root -d ny_taxi
 
-
+# install wget
 - install wget on window
 https://builtvisible.com/download-your-website-with-wget/
 - install wget on git bash
 https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058#wget
 
-
+# datasets
 taxi data
 `wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.parquet`
 
 [Optional] transform parquet to csv (13/5/2022 there are only parquet file available to download from taxi dataset)
 these `pandas pyarrow fastparquet` are required and then,
-`parq = pd.read_parquet('yellow_tripdata_2021-01.parquet') parq.to_csv('yellow_tripdata_2021-01.csv')`
+`parq = pd.read_parquet('yellow_tripdata_2021-01.parquet')`
+`parq.to_csv('yellow_tripdata_2021-01.csv')`
 
 # docker postgres
 winpty docker run -it \
@@ -77,7 +79,7 @@ python ingest_data.py \
 # dockerize above pipeline
 docker build -t taxi_ingest:v001 .
 
-URL="http://172.20.10.11:8000/yellow_tripdata_2021-01.parquet"
+URL="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.parquet"
 
 winpty docker run -it \
     --network=pg-network \
@@ -89,3 +91,26 @@ winpty docker run -it \
         --db=ny_taxi \
         --table_name=yellow_taxi_trips \
         --url=${URL} 
+
+# docker-compose
+
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ny_taxi
+    volumes:
+      - "./ny-taxi-volume:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8080:80"
+
+- Error response from daemon: i/o timeout fixed via this https://github.com/docker/for-win/issues/4413

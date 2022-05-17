@@ -1,0 +1,12 @@
+1_terraform_gcp/.terraform
+1_terraform_gcp/.terraform.lock.hcl
+1_terraform_gcp/terraform.tfstate.backup
+1_terraform_gcp/terraform.tfstate
+
+2_docker_sql/data_pgadmin
+2_docker_sql/ny_taxi_postgres_data
+
+*.csv
+*.parquet
+*.json
+*.env
