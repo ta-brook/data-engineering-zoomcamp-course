@@ -8,7 +8,7 @@ Consider only trips that started on January 15.
 
 ```
 SELECT 
-    SUM(total_amount)
+    COUNT(total_amount)
 FROM 
     yellow_taxi_trips
 WHERE
