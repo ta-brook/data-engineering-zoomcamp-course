@@ -112,7 +112,7 @@ Generate your project's documentation website first -
 ```bash
 docker compose run \
   --workdir="//usr/app/dbt/taxi_rides_ny" \
-  dbt-de-zoomcamp \
+  de-dbt-zoomcamp \
   docs generate
 ```
 
@@ -121,13 +121,13 @@ Serve your docs -
 ```bash
 docker compose run \
   --workdir="//usr/app/dbt/taxi_rides_ny" \
-  dbt-de-zoomcamp \
+  de-dbt-zoomcamp \
   docs serve 
 ```
 
 **Note:** If the above commands seem inconvenient, you can change the `entrypoint` to `bash` using the below command and run commands normally like `dbt run` 
 ```bash
-docker compose run --entrypoint='bash' dbt-de-zoomcamp
+docker compose run --entrypoint='bash' de-dbt-zoomcamp
 ```
 
 
