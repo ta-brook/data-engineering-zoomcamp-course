@@ -3,3 +3,5 @@
 *.json
 *.env
 *.pyc
+*.ipynb_checkpoints
+*.log
