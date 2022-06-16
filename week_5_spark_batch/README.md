@@ -98,7 +98,7 @@ types.StructType([
 
 `Note: The launch scripts do not currently support Windows. To run a Spark cluster on Windows, start the master and workers by hand.`
 
-1. go to `%SPARK_HOME%\bin` folder in a command prompt
+1. go to `%SPARK_HOME%/bin` folder in a command prompt
 
 2. Run `spark-class org.apache.spark.deploy.master.Master` to run the master. This will give you a URL of the form `spark://ip:port`
 
