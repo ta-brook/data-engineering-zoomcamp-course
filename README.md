@@ -2,8 +2,6 @@
 
 This repo is free course from [DataTalkClub](https://github.com/DataTalksClub) which is covers:
 
-### Terraform
-
 ### Docker
 - Dockerfile
 - Docker-compose
@@ -16,7 +14,6 @@ This repo is free course from [DataTalkClub](https://github.com/DataTalksClub) w
 - GCS
 - Dataproc
 - VM
-
 
 ### Airflow
 - Dag
@@ -34,7 +31,7 @@ This repo is free course from [DataTalkClub](https://github.com/DataTalksClub) w
 
 
 ### Terraform
-- concept of Iaas
+- concept of Ias
 - build data warehouse and data lake
 
 
@@ -42,3 +39,6 @@ This repo is free course from [DataTalkClub](https://github.com/DataTalksClub) w
 
 
 ### Kafka
+
+
+### metabase & data studio
